@@ -1,0 +1,5 @@
+name = Nuntiis messages
+description = Provide the messages mechanizm: chat, rooms or private.
+core = 7.x
+
+dependencies[] = nuntiis

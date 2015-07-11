@@ -1,0 +1,5 @@
+name = Nuntiis private rooms
+description = provide private rooms for users. AKA private groups.
+core = 7.x
+
+dependencies[] = nuntiis_rooms

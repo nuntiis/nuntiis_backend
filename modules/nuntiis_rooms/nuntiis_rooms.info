@@ -1,0 +1,5 @@
+name = Nuntiis rooms
+description = Display messages in a single rooms. AKA group.
+core = 7.x
+
+dependencies[] = nuntiis
