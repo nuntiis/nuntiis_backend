@@ -4,3 +4,27 @@
  * @file
  * nuntiils.module
  */
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function nuntiis_ctools_plugin_directory($module, $plugin) {
+  if ($module == 'restful') {
+    return 'plugins/' . $plugin;
+  }
+}
+
+/**
+ * Implements hook_entity_property_info_alter().
+ */
+function nuntiis_entity_property_info_alter(&$info) {
+
+  $info['user']['bundles']['user']['properties']['picture'] = array(
+    'label' => t('Picture'),
+    'setter callback' => 'entity_property_verbatim_set',
+    'getter callback' => 'entity_property_verbatim_get',
+    'type' => 'struct',
+    'schema field' => 'picture',
+  );
+
+}

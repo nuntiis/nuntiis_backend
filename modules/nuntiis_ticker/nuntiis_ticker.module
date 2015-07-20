@@ -4,3 +4,45 @@
  * @file
  * nuntiis_ticker.module
  */
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function nuntiis_ticker_ctools_plugin_directory($module, $plugin) {
+  if ($module == 'restful') {
+    return 'plugins/' . $plugin;
+  }
+}
+
+/**
+ * Implements hook_entity_info().
+ */
+function nuntiis_ticker_entity_info() {
+  return array(
+    'nuntiis_ticker' => array(
+      'label' => t('Nuntiis ticker'),
+      'controller class' => 'EntityAPIController',
+      'entity class' => 'NuntiisTicker',
+      'base table' => 'nuntiis_ticker',
+      'access callback' => 'nuntiis_ticker_access',
+      'entity keys' => array(
+        'id' => 'id',
+        'label' => 'title',
+      ),
+      'bundles' => array(),
+      'bundle keys' => array(
+        'bundle' => 'name',
+      ),
+      'metadata controller class' => 'NuntiisTickerMetadata',
+      'entity cache' => module_exists('entitycache'),
+    ),
+  );
+}
+
+/**
+ * Access callback for nuntiis ticker callback.
+ */
+function nuntiis_ticker_access($op, $entity, $account) {
+  // todo: do.
+  return TRUE;
+}

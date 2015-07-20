@@ -1,0 +1,53 @@
+<?php
+
+/**
+ * @file
+ * nuntiis_ticker.install
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function nuntiis_ticker_schema() {
+  return array(
+    'nuntiis_ticker' => array(
+      'description' => 'Storage ticker entries.',
+      'fields' => array(
+        'id' => array(
+          'type' => 'serial',
+          'not null' => TRUE,
+          'description' => 'Primary key.',
+        ),
+        'title' => array(
+          'description' => 'The title of the ticker.',
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => TRUE,
+          'default' => '',
+        ),
+        'lead_to' => array(
+          'description' => 'Where the ticker should lead the user.',
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => TRUE,
+          'default' => '',
+        ),
+        'status' => array(
+          'type' => 'int',
+          'not null' => TRUE,
+          'default' => 0x01,
+          'size' => 'tiny',
+          'description' => 'Determine if we need to show the ticker or not.',
+        ),
+        'icon' => array(
+          'description' => 'The icon of the ticker. Can be any vector font icon.',
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => TRUE,
+          'default' => '',
+        ),
+      ),
+      'primary key' => array('id'),
+    ),
+  );
+}

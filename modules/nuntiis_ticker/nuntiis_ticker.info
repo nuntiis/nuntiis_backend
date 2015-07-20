@@ -3,3 +3,5 @@ description = Provide tickers as links to rooms.
 core = 7.x
 
 dependencies[] = nuntiis
+
+files[] = includes/NuntiisTickerMetadata.inc
