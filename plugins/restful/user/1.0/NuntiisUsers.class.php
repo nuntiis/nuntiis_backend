@@ -2,10 +2,10 @@
 
 /**
  * @file
- * Contains NuntiisUsers.
+ * Contains nuntiusUsers.
  */
 
-class NuntiisUsers extends \RestfulEntityBaseUser {
+class nuntiusUsers extends \RestfulEntityBaseUser {
 
   public function publicFieldsInfo() {
     $fields = parent::publicFieldsInfo();

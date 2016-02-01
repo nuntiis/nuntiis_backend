@@ -8,7 +8,7 @@
 /**
  * Extend the defaults.
  */
-class NuntiisTickerMetadata extends EntityDefaultMetadataController {
+class NuntiusTickerMetadata extends EntityDefaultMetadataController {
 
   public function entityPropertyInfo() {
     $info = parent::entityPropertyInfo();

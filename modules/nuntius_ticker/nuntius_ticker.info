@@ -1,7 +1,7 @@
-name = Nuntiis ticker
+name = nuntius ticker
 description = Provide tickers as links to rooms.
 core = 7.x
 
-dependencies[] = nuntiis
+dependencies[] = nuntius
 
 files[] = includes/NuntiisTickerMetadata.inc

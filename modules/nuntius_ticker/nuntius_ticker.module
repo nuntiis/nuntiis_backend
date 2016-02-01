@@ -1,0 +1,39 @@
+<?php
+
+/**
+ * @file
+ * nuntius_ticker.module
+ */
+
+/**
+ * Implements hook_entity_info().
+ */
+function nuntius_ticker_entity_info() {
+  return array(
+    'nuntius_ticker' => array(
+      'label' => t('nuntius ticker'),
+      'controller class' => 'EntityAPIController',
+      'entity class' => 'nuntiusTicker',
+      'base table' => 'nuntius_ticker',
+      'access callback' => 'nuntius_ticker_access',
+      'entity keys' => array(
+        'id' => 'id',
+        'label' => 'title',
+      ),
+      'bundles' => array(),
+      'bundle keys' => array(
+        'bundle' => 'name',
+      ),
+      'metadata controller class' => 'nuntiusTickerMetadata',
+      'entity cache' => module_exists('entitycache'),
+    ),
+  );
+}
+
+/**
+ * Access callback for nuntius ticker callback.
+ */
+function nuntius_ticker_access($op, $entity, $account) {
+  // todo: do.
+  return TRUE;
+}

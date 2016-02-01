@@ -2,15 +2,15 @@
 
 /**
  * @file
- * nuntiis_ticker.install
+ * nuntius_ticker.install
  */
 
 /**
  * Implements hook_schema().
  */
-function nuntiis_ticker_schema() {
+function nuntius_ticker_schema() {
   return array(
-    'nuntiis_ticker' => array(
+    'nuntius_ticker' => array(
       'description' => 'Storage ticker entries.',
       'fields' => array(
         'id' => array(

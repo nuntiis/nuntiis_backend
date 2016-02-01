@@ -1,13 +1,13 @@
 <?php
 
 $plugin = array(
-  'label' => t('Nuntiis user'),
-  'description' => t('Provide user endpoint for nuntiis.'),
-  'resource' => 'nuntiis_users',
-  'class' => 'NuntiisUsers',
+  'label' => t('nuntius user'),
+  'description' => t('Provide user endpoint for nuntius.'),
+  'resource' => 'nuntius_users',
+  'class' => 'nuntiusUsers',
   'entity_type' => 'user',
   'bundle' => 'user',
   'authentication_types' => TRUE,
   'authentication_optional' => TRUE,
-  'menu_item' => 'nuntiis/user',
+  'menu_item' => 'nuntius/user',
 );

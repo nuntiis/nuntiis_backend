@@ -8,7 +8,7 @@
 /**
  * Implements hook_ctools_plugin_directory().
  */
-function nuntiis_ctools_plugin_directory($module, $plugin) {
+function nuntius_ctools_plugin_directory($module, $plugin) {
   if ($module == 'restful') {
     return 'plugins/' . $plugin;
   }
@@ -17,7 +17,7 @@ function nuntiis_ctools_plugin_directory($module, $plugin) {
 /**
  * Implements hook_entity_property_info_alter().
  */
-function nuntiis_entity_property_info_alter(&$info) {
+function nuntius_entity_property_info_alter(&$info) {
 
   $info['user']['bundles']['user']['properties']['picture'] = array(
     'label' => t('Picture'),
