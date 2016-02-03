@@ -2,11 +2,7 @@ name = nuntius backend
 description = The base for the backend of nuntius.
 core = 7.x
 php = 5.4
+package = Nuntius
+registry_autoload[] = PSR-4
 
-dependencies[] = ctools
-dependencies[] = og
-dependencies[] = message
-dependencies[] = message_ui
-dependencies[] = message_notify
-dependencies[] = message_subscribe
-dependencies[] = restful (>7.x-2.0)
+dependencies[] = restful

@@ -2,10 +2,10 @@
 
 /**
  * @file
- * Contains \Drupal\restful_example\Plugin\resource\node\article\v1\Articles__1_0.
+ * Contains \Drupal\nuntius\Plugin\resource\ticker\Ticker__1_0.
  */
 
-namespace Drupal\nuntius_ticker\Plugin\resource\ticker\v1;
+namespace Drupal\nuntius_ticker\Plugin\resource\ticker;
 
 use Drupal\restful\Http\RequestInterface;
 use Drupal\restful\Plugin\resource\ResourceEntity;
@@ -14,7 +14,6 @@ use Drupal\restful\Plugin\resource\ResourceNode;
 
 /**
  * Class Ticker
- * @package Drupal\nuntius_ticker\Plugin\resource
  *
  * @Resource(
  *   name = "ticker:1.0",

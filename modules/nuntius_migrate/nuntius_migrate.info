@@ -2,8 +2,6 @@ name = Nuntius ticker
 description = Provide tickers as links to rooms.
 core = 7.x
 package = Nuntius
-registry_autoload[] = PSR-4
 
 dependencies[] = nuntius
-
-files[] = includes/NuntiisTickerMetadata.inc
+dependencies[] = migrate
