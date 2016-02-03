@@ -3,5 +3,8 @@ description = Provide tickers as links to rooms.
 core = 7.x
 package = Nuntius
 
-dependencies[] = nuntius
 dependencies[] = migrate
+dependencies[] = nuntius
+dependencies[] = nuntius_tickers
+
+files[] = migrations/NuntiusMigrateTickers.php
