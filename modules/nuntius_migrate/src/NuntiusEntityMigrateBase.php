@@ -26,7 +26,15 @@ abstract class NuntiusEntityMigrateBase extends \Migration {
 
     $this->source = new \MigrateSourceCSV(drupal_get_path('module', 'nuntius_migrate') . '/csv/' . $this->entityType . '.csv', $this->csvColumns);
     $this->destination = new NuntiusMigrateDestinationEntity($this->entityType, '');
-    $this->map = new \MigrateSQLMap($this->machineName, [], \NuntiusMigrateTickers::getKeySchema());
+    $key = [
+      'id' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'Identifier',
+      )
+    ];
+    $this->map = new \MigrateSQLMap($this->machineName, $key, \NuntiusMigrateTickers::getKeySchema());
   }
 
 }

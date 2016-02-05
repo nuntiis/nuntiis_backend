@@ -7,14 +7,12 @@ class NuntiusMigrateTickers extends NuntiusEntityMigrateBase {
   protected $entityType = 'nuntius_ticker';
 
   public $csvColumns = [
-    ['id', 'ID'],
     ['title', 'Title'],
   ];
 
   public function __construct(array $arguments) {
     parent::__construct($arguments);
 
-    $this->addFieldMapping('id', 'id');
     $this->addFieldMapping('title', 'title');
   }
 

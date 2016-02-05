@@ -18,16 +18,14 @@ class NuntiusMigrateDestinationEntity extends \MigrateDestinationEntity {
     return ['id', 'title'];
   }
 
-  /**
-   * Derived classes must implement import(), to construct one new object (pre-pppulated
-   * using field mappings in the Migration). It is expected to call prepare and
-   * complete handlers, passing them $row (the raw data from the source).
-   */
-  public function import(\stdClass $object, \stdClass $row) {
-    dpm(func_get_args());
-
-    $this->complete($object, $row);
-
-    return [1];
+  public function import(\stdClass $node, \stdClass $row) {
+    $entity = entity_create('nuntius_ticker', array('title' => 1));
+//    $this->prepare($entity, $row);
+    entity_save('nuntius_ticker', $entity);
+//    $this->complete($entity, $row);
+    dpm($entity);
+    $this->numCreated++;
+    return array($entity->id);
   }
+
 }
