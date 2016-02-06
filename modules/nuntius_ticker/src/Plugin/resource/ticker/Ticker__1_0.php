@@ -16,7 +16,7 @@ use Drupal\restful\Plugin\resource\ResourceNode;
  * Class Ticker
  *
  * @Resource(
- *   name = "ticker:1.0",
+ *   name = "tickers:1.0",
  *   resource = "tickers",
  *   label = "Tickers",
  *   description = "Export the tickers with all authentication providers.",
@@ -28,5 +28,23 @@ use Drupal\restful\Plugin\resource\ResourceNode;
  * )
  */
 class Ticker__1_0 extends ResourceEntity implements ResourceInterface {
+
+  public function publicFields() {
+    $fields = parent::publicFields();
+
+    $fields['leadTo'] = [
+      'property' => 'lead_to',
+    ];
+
+    $fields['status'] = [
+      'property' => 'status',
+    ];
+
+    $fields['icon'] = [
+      'property' => 'icon',
+    ];
+
+    return $fields;
+  }
 
 }

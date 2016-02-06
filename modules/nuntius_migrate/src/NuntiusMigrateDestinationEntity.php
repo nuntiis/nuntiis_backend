@@ -15,10 +15,12 @@ class NuntiusMigrateDestinationEntity extends \MigrateDestinationEntity {
    *  Values: Human-friendly descriptions of the fields.
    */
   public function fields() {
-    return ['id', 'title'];
+    return ['title'];
   }
 
   public function import(\stdClass $node, \stdClass $row) {
+    dpm($row);
+
     $entity = entity_create('nuntius_ticker', array('title' => 1));
 //    $this->prepare($entity, $row);
     entity_save('nuntius_ticker', $entity);

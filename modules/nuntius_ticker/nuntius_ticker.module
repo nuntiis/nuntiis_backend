@@ -34,6 +34,6 @@ function nuntius_ticker_entity_info() {
  * Access callback for nuntius ticker callback.
  */
 function nuntius_ticker_access($op, $entity, $account) {
-  // todo: do.
   return TRUE;
 }
+
