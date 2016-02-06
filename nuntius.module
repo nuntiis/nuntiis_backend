@@ -5,13 +5,57 @@
  * nuntiils.module
  */
 
+use Drupal\nuntius\Nuntius;
+use Drupal\nuntius\WebSocketPluginManager;
+
 /**
- * Implements hook_ctools_plugin_directory().
+ * Implements hook_menu().
  */
-function nuntius_ctools_plugin_directory($module, $plugin) {
-  if ($module == 'restful') {
-    return 'plugins/' . $plugin;
+function nuntius_menu() {
+  $items = [];
+
+  $items['admin/config/nuntius'] = [
+    'title' => 'Nuntius',
+    'weight' => -5,
+    'page callback' => 'system_admin_menu_block_page',
+    'access arguments' => array('administer group'),
+    'file' => 'system.admin.inc',
+    'file path' => drupal_get_path('module', 'system'),
+  ];
+
+  $items['admin/config/nuntius/configuration'] = [
+    'title' => 'Nuntius configuration',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('nuntius_core_settings'),
+    'access arguments' => array('nuntius_manage_settings'),
+  ];
+
+  if (Nuntius::getWebSocketManager()) {
+    $items['admin/config/nuntius/configuration/settings'] = $items['admin/config/nuntius/configuration'] + [
+      'type' => MENU_DEFAULT_LOCAL_TASK,
+    ];
+    $items['admin/config/nuntius/configuration/websokcet_settings'] = [
+      'title' => 'Nuntius websokcet configuration',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('nuntius_websokcet_settings'),
+      'access arguments' => array('nuntius_manage_settings'),
+      'type' => MENU_LOCAL_TASK,
+    ];
   }
+
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function nuntius_permission() {
+  return [
+    'nuntius_manage_settings' => [
+      'title' => t('Manage nuntius settings'),
+      'description' => t('Manage nuntius core setting.')
+    ],
+  ];
 }
 
 /**
@@ -27,4 +71,46 @@ function nuntius_entity_property_info_alter(&$info) {
     'schema field' => 'picture',
   );
 
+}
+
+/**
+ * Settings form;
+ */
+function nuntius_core_settings() {
+  $form = [];
+
+  $plugin_manager = WebSocketPluginManager::create();
+
+  $options = [];
+  foreach ($plugin_manager->getDefinitions() as $manager => $info) {
+    $options[$manager] = $info['name'];
+  }
+
+  $form['nuntius_websocket_manager'] = array(
+    '#type' => 'select',
+    '#title' => t('WebSocket manager'),
+    '#options' => [NULL => t('Select a manager')] + $options,
+    '#default_value' => variable_get('nuntius_websocket_manager'),
+  );
+
+  $form['#submit'][] = 'nuntius_core_settings_submit';
+  return system_settings_form($form);
+}
+
+/**
+ * Submit handler;
+ */
+function nuntius_core_settings_submit($form, $form_state) {
+  variable_set('menu_rebuild_needed', TRUE);
+}
+
+/**
+ * Websocket settings form.
+ */
+function nuntius_websokcet_settings() {
+  $form = [];
+  Nuntius::initWebSocketManager();
+
+
+  return $form;
 }

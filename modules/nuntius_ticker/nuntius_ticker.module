@@ -24,7 +24,6 @@ function nuntius_ticker_entity_info() {
       'bundle keys' => array(
         'bundle' => 'name',
       ),
-      'metadata controller class' => 'nuntiusTickerMetadata',
       'entity cache' => module_exists('entitycache'),
     ),
   );
