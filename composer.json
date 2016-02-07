@@ -1,0 +1,8 @@
+{
+  "config": {
+    "vendor-dir": "src/vendor"
+  },
+  "require": {
+    "pusher/pusher-php-server": "^2.2"
+  }
+}

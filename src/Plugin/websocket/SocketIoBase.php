@@ -1,8 +1,8 @@
 <?php
 
-namespace Drupal\nuntius\Plugin\websokcet;
+namespace Drupal\nuntius\Plugin\websocket;
 
-use Drupal\nuntius\WebSocketInterface;
+use Drupal\nuntius\WebSocketBase;
 
 /**
  * Class SocketIoBase
@@ -13,16 +13,31 @@ use Drupal\nuntius\WebSocketInterface;
  *   name = "Socket IO base"
  * )
  */
-class SocketIoBase implements WebSocketInterface {
+class SocketIoBase extends WebSocketBase {
 
   /**
-   * Settings form for the plugin manager.
-   *
-   * @return array
-   *   The settings form.
+   * {@inheritdoc}
    */
-  public function settingsForm()
-  {
-    // TODO: Implement settingsForm() method.
+  public function defaultValues() {
+    return ['address' => ''];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function settingsForm() {
+    return [
+      'address' => [
+        '#type' => 'textfield',
+        '#title' => t('Websocket address'),
+        '#default_value' => $this->settings['address'],
+      ],
+    ];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function brodcast($message) {
   }
 }

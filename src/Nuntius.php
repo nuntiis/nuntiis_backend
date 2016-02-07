@@ -15,15 +15,12 @@ class Nuntius {
 
   /**
    * Initialise the websoket plugin.
+   *
+   * @return WebSocketInterface
    */
   static public function initWebSocketManager() {
     $name = self::getWebSocketManager();
     $plugin_manager = WebSocketPluginManager::create();
-
-    dpm(get_class_methods($plugin_manager));
-
-    dpm($plugin_manager->getDefinitions());
-
-    $foo = $plugin_manager->createInstance($name, []);
+    return $plugin_manager->createInstance($name, $plugin_manager->getDefinition($name));
   }
 }

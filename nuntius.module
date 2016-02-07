@@ -8,6 +8,10 @@
 use Drupal\nuntius\Nuntius;
 use Drupal\nuntius\WebSocketPluginManager;
 
+if (file_exists(drupal_get_path('module', 'nuntius') . '/src/vendor/autoload.php')) {
+  require_once 'src/vendor/autoload.php';
+}
+
 /**
  * Implements hook_menu().
  */
@@ -107,10 +111,25 @@ function nuntius_core_settings_submit($form, $form_state) {
 /**
  * Websocket settings form.
  */
-function nuntius_websokcet_settings() {
-  $form = [];
-  Nuntius::initWebSocketManager();
+function nuntius_websokcet_settings($form, &$form_state) {
+  $plugin = Nuntius::initWebSocketManager();
+  $form_state['#plugin'] = $plugin;
+  $form = $plugin->settingsForm();
 
+  $form['actions'] = [
+    '#type' => 'actions',
+    'submit' => [
+      '#type' => 'submit',
+      '#value' => t('Submit'),
+    ],
+  ];
 
   return $form;
+}
+
+/**
+ * Submit handler; Save the settings of the plugin.
+ */
+function nuntius_websokcet_settings_submit($form, $form_state) {
+  $form_state['#plugin']->saveSettings($form_state['values']);
 }
