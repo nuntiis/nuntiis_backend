@@ -3,6 +3,7 @@
     "vendor-dir": "src/vendor"
   },
   "require": {
+    "wisembly/elephant.io": "~3.0",
     "pusher/pusher-php-server": "^2.2"
   }
 }
