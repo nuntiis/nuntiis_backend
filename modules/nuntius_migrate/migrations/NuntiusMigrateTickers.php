@@ -20,13 +20,13 @@ class NuntiusMigrateTickers extends NuntiusEntityMigrateBase {
    * {@inheritdoc}
    */
   static public function getKeySchema() {
-    return array(
-      'id' => array(
+    return [
+      'id' => [
         'type' => 'int',
         'unsigned' => TRUE,
         'description' => 'ID of ticker',
-      ),
-    );
+      ],
+    ];
   }
 
 }

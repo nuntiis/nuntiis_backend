@@ -37,9 +37,9 @@ class Message__1_0 extends ResourceEntity implements ResourceInterface {
 
     $fields['room'] = [
       'property' => 'room_id',
-      'process_callbacks' => array(
-        array($this, 'processRoom'),
-      ),
+      'process_callbacks' => [
+        [$this, 'processRoom'],
+      ],
     ];
 
     $fields['user'] = [

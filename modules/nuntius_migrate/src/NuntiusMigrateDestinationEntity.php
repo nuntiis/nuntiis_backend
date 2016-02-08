@@ -21,13 +21,13 @@ class NuntiusMigrateDestinationEntity extends \MigrateDestinationEntity {
   public function import(\stdClass $node, \stdClass $row) {
     dpm($row);
 
-    $entity = entity_create('nuntius_ticker', array('title' => 1));
+    $entity = entity_create('nuntius_ticker', ['title' => 1]);
 //    $this->prepare($entity, $row);
     entity_save('nuntius_ticker', $entity);
 //    $this->complete($entity, $row);
     dpm($entity);
     $this->numCreated++;
-    return array($entity->id);
+    return [$entity->id];
   }
 
 }

@@ -29,12 +29,12 @@ class User__1_0 extends ResourceEntity implements ResourceInterface {
   public function publicFields() {
     $fields = parent::publicFields();
 
-    $fields['image'] = array(
+    $fields['image'] = [
       'property' => 'picture',
-      'process_callbacks' => array(
-        array($this, 'processImage'),
-      ),
-    );
+      'process_callbacks' => [
+        [$this, 'processImage'],
+      ],
+    ];
 
     return $fields;
   }
