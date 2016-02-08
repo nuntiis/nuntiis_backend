@@ -1,6 +1,0 @@
-name = nuntius private rooms
-description = provide private rooms for users. AKA private groups.
-core = 7.x
-package = Nuntius
-
-dependencies[] = nuntius_rooms

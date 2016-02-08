@@ -2,10 +2,10 @@
 
 /**
  * @file
- * Contains \Drupal\nuntius_ticker\Plugin\resource\ticker\Ticker__1_0.
+ * Contains \Drupal\nuntius_ticker\Plugin\resource\Ticker__1_0.
  */
 
-namespace Drupal\nuntius_ticker\Plugin\resource\ticker;
+namespace Drupal\nuntius_ticker\Plugin\resource;
 
 use Drupal\restful\Plugin\resource\ResourceEntity;
 use Drupal\restful\Plugin\resource\ResourceInterface;

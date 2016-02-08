@@ -7,14 +7,17 @@ use Drupal\nuntius\Nuntius;
 class nuntiusTickerEntity extends Entity {
 
   public function save() {
-    parent::save();
+    $entity = parent::save();
 
     // Send message to the websocket service.
-//    if (!$resource = Nuntius::processRestfulEntity($this->identifier(), 'tickers')) {
-//      return;
-//    }
-//    $websocket = Nuntius::initWebSocketManager();
-//    $websocket->brodcast(['event' => 'new ticker', 'data' => [$resource]]);
+    if (!$resource = Nuntius::processRestfulEntity($this->identifier(), 'tickers')) {
+      return $entity;
+    }
+
+    $websocket = Nuntius::initWebSocketManager();
+    $websocket->brodcast(['event' => 'new ticker', 'data' => [$resource]]);
+
+    return $entity;
   }
 
 }
