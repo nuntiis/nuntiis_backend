@@ -13,7 +13,7 @@ function nuntius_ticker_entity_info() {
     'nuntius_ticker' => array(
       'label' => t('nuntius ticker'),
       'controller class' => 'EntityAPIController',
-      'entity class' => 'nuntiusTicker',
+      'entity class' => 'nuntiusTickerEntity',
       'base table' => 'nuntius_ticker',
       'access callback' => 'nuntius_ticker_access',
       'entity keys' => array(
@@ -21,9 +21,6 @@ function nuntius_ticker_entity_info() {
         'label' => 'title',
       ),
       'bundles' => array(),
-      'bundle keys' => array(
-        'bundle' => 'name',
-      ),
       'entity cache' => module_exists('entitycache'),
     ),
   );

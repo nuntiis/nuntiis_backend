@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\nuntius\Plugin\resource\nuntius_users;
+namespace Drupal\nuntius\Plugin\resource\users;
 
 use Drupal\restful\Plugin\resource\ResourceEntity;
 use Drupal\restful\Plugin\resource\ResourceInterface;

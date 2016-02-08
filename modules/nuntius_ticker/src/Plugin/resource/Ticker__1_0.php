@@ -2,15 +2,13 @@
 
 /**
  * @file
- * Contains \Drupal\nuntius\Plugin\resource\ticker\Ticker__1_0.
+ * Contains \Drupal\nuntius_ticker\Plugin\resource\ticker\Ticker__1_0.
  */
 
 namespace Drupal\nuntius_ticker\Plugin\resource\ticker;
 
-use Drupal\restful\Http\RequestInterface;
 use Drupal\restful\Plugin\resource\ResourceEntity;
 use Drupal\restful\Plugin\resource\ResourceInterface;
-use Drupal\restful\Plugin\resource\ResourceNode;
 
 /**
  * Class Ticker

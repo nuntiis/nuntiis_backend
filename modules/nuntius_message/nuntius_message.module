@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * @file
+ * nuntius_message.module
+ */
+
+/**
+ * Implements hook_entity_info().
+ */
+function nuntius_message_entity_info() {
+  return [
+    'nuntius_message' => [
+      'label' => t('Nuntius message'),
+      'controller class' => 'EntityAPIController',
+      'entity class' => 'nuntiusMessageEntity',
+      'base table' => 'nuntius_message',
+      'access callback' => 'nuntius_message_access',
+      'entity keys' => array(
+        'id' => 'id',
+      ),
+      'bundles' => array(),
+      'entity cache' => module_exists('entitycache'),
+    ],
+  ];
+}
+
+/**
+ * Entity access callback.
+ */
+function nuntius_message_access($op, $entity, $account) {
+  return TRUE;
+}

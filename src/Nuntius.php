@@ -42,7 +42,10 @@ class Nuntius {
    * @throws \Drupal\restful\Exception\BadRequestException
    */
   static public function processRestfulEntity($id, $resource, $version = ':1.0') {
-    $handler = restful()->getResourceManager()->getPlugin($resource . $version);
+    if (!$handler = restful()->getResourceManager()->getPlugin($resource . $version)) {
+      return;
+    }
+
     $handler->setRequest(Request::create(''));
     $result = restful()->getFormatterManager()->format($handler->doGet($id));
 

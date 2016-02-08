@@ -6,4 +6,4 @@ registry_autoload[] = PSR-4
 
 dependencies[] = nuntius
 
-files[] = src/nuntiusTicker.inc
+files[] = src/nuntiusTickerEntity.php
