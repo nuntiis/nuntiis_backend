@@ -72,4 +72,4 @@ ping me on Twitter - @RoySegall and i'll create for you a project when you can
 start contribute or just start your own repo.
 
 # Nuntius as an application
-There is a plan for Ionic and electron boilerplates but it's in the far future.
+There is a plan for Ionic and electron boilerplate but it's in the far future.
