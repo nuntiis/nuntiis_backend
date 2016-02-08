@@ -66,10 +66,10 @@ Facebook the user should have it on Nuntius. It's construct from:
  could be edge cases covered by the front end.
 
 
- ## How can I join in?
- You can start contribute to one of the projects if you want your own language
- ping me on Twitter - @RoySegall and i'll create for you a project when you can
- start contribute or just start your own repo.
+## How can I join in?
+You can start contribute to one of the projects if you want your own language
+ping me on Twitter - @RoySegall and i'll create for you a project when you can
+start contribute or just start your own repo.
 
- # Nuntius as an application
- There is a plan for Ionic and electron boilerplates but it's in the far future.
+# Nuntius as an application
+There is a plan for Ionic and electron boilerplates but it's in the far future.
