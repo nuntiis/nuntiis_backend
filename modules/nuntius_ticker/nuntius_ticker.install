@@ -9,45 +9,45 @@
  * Implements hook_schema().
  */
 function nuntius_ticker_schema() {
-  return array(
-    'nuntius_ticker' => array(
+  return [
+    'nuntius_ticker' => [
       'description' => 'Storage ticker entries.',
-      'fields' => array(
-        'id' => array(
+      'fields' => [
+        'id' => [
           'type' => 'serial',
           'not null' => TRUE,
           'description' => 'Primary key.',
-        ),
-        'title' => array(
+        ],
+        'title' => [
           'description' => 'The title of the ticker.',
           'type' => 'varchar',
           'length' => 255,
           'not null' => TRUE,
           'default' => '',
-        ),
-        'lead_to' => array(
+        ],
+        'lead_to' => [
           'description' => 'Where the ticker should lead the user.',
           'type' => 'varchar',
           'length' => 255,
           'not null' => TRUE,
           'default' => '',
-        ),
-        'status' => array(
+        ],
+        'status' => [
           'type' => 'int',
           'not null' => TRUE,
           'default' => 0x01,
           'size' => 'tiny',
           'description' => 'Determine if we need to show the ticker or not.',
-        ),
-        'icon' => array(
+        ],
+        'icon' => [
           'description' => 'The icon of the ticker. Can be any vector font icon.',
           'type' => 'varchar',
           'length' => 255,
           'not null' => TRUE,
           'default' => '',
-        ),
-      ),
-      'primary key' => array('id'),
-    ),
-  );
+        ],
+      ],
+      'primary key' => ['id'],
+    ],
+  ];
 }

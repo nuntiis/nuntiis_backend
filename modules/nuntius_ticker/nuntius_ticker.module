@@ -9,21 +9,21 @@
  * Implements hook_entity_info().
  */
 function nuntius_ticker_entity_info() {
-  return array(
-    'nuntius_ticker' => array(
+  return [
+    'nuntius_ticker' => [
       'label' => t('nuntius ticker'),
       'controller class' => 'EntityAPIController',
       'entity class' => 'nuntiusTickerEntity',
       'base table' => 'nuntius_ticker',
       'access callback' => 'nuntius_ticker_access',
-      'entity keys' => array(
+      'entity keys' => [
         'id' => 'id',
         'label' => 'title',
-      ),
-      'bundles' => array(),
+      ],
+      'bundles' => [],
       'entity cache' => module_exists('entitycache'),
-    ),
-  );
+    ],
+  ];
 }
 
 /**

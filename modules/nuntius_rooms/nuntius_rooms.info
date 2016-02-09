@@ -1,6 +1,0 @@
-name = nuntius rooms
-description = Display messages in a single rooms. AKA group.
-core = 7.x
-package = Nuntius
-
-dependencies[] = nuntius

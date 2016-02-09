@@ -1,5 +1,5 @@
-name = nuntius message
-description = Provide the messages mechanizm: chat, rooms or private.
+name = Nuntius message
+description = Provide the messages mechanism: chat, rooms or private.
 core = 7.x
 package = Nuntius
 

@@ -12,33 +12,33 @@ function nuntius_message_schema() {
   return [
     'nuntius_message' => [
       'description' => 'Storage message entries.',
-      'fields' => array(
-        'id' => array(
+      'fields' => [
+        'id' => [
           'type' => 'serial',
           'not null' => TRUE,
           'description' => 'Primary key.',
-        ),
-        'text' => array(
+        ],
+        'text' => [
           'description' => 'The text of the message.',
           'type' => 'text',
           'size' => 'big',
           'not null' => TRUE,
-        ),
-        'room_id' => array(
+        ],
+        'room_id' => [
           'description' => 'The room which the message belong to.',
           'type' => 'varchar',
           'length' => 255,
           'not null' => TRUE,
           'default' => '',
-        ),
-        'uid' => array(
+        ],
+        'uid' => [
           'description' => 'The user ID.',
           'type' => 'int',
           'length' => 11,
           'not null' => TRUE,
-        ),
-      ),
-      'primary key' => array('id'),
+        ],
+      ],
+      'primary key' => ['id'],
     ],
   ];
 }
