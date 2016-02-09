@@ -42,7 +42,16 @@ function nuntius_room_entity_info() {
  * Entity access callback.
  */
 function nuntius_room_access($op, $entity, $account) {
-  return TRUE;
+  if (!$entity->privacy) {
+    return TRUE;
+  }
+
+  // Check if the current user is the owner of the room.
+  if ($entity->uid == $account->uid) {
+    return TRUE;
+  }
+
+  $query = new \EntityFieldQuery();
 }
 
 /**

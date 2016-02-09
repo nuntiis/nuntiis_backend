@@ -5,5 +5,5 @@ package = Nuntius
 
 dependencies[] = nuntius
 
-files[] = nuntiusRoomAudienceEntity.php
-files[] = nuntiusRoomEntity.php
+files[] = src/nuntiusRoomAudienceEntity.php
+files[] = src/nuntiusRoomEntity.php

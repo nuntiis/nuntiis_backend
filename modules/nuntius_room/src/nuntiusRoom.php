@@ -13,6 +13,11 @@ class nuntiusRoom {
    * @return \nuntiusRoomEntity
    */
   static public function create($values = []) {
+    global $user;
+    $values += [
+      'uid' => $user->uid,
+      'privacy' => 0,
+    ];
     return entity_create('nuntius_room', $values);
   }
 

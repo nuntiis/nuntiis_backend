@@ -32,6 +32,10 @@ class NuntiusRoom__1_0 extends ResourceEntity implements ResourceInterface {
   public function publicFields() {
     $fields = parent::publicFields();
 
+    $fields['privacy'] = [
+      'property' => 'privacy',
+    ];
+
     return $fields;
   }
 
