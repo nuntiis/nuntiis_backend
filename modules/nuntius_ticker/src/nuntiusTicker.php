@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\nunitus_ticker;
+namespace Drupal\nuntius_ticker;
 
 class nuntiusTicker {
 

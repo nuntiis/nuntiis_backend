@@ -1,0 +1,63 @@
+<?php
+
+/**
+ * @file
+ * nuntius_room.install
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function nuntius_room_schema() {
+  return [
+    'nuntius_room' => [
+      'description' => 'Create room for messages.',
+      'fields' => [
+        'id' => [
+          'type' => 'serial',
+          'description' => 'Primary key.',
+        ],
+        'title' => [
+          'description' => 'The title of the room.',
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => TRUE,
+          'default' => '',
+        ],
+        'uid' => [
+          'description' => 'The owner of the room.',
+          'type' => 'int',
+          'length' => 11,
+          'not null' => TRUE,
+        ],
+        'privacy' => [
+          'description' => 'Room privacy level.',
+          'type' => 'int',
+          'length' => 11,
+          'not null' => TRUE,
+        ],
+      ],
+      'primary key' => ['id'],
+    ],
+    'nuntius_room_audience' => [
+      'description' => 'The audience of non-public room.',
+      'fields' => [
+        'id' => [
+          'type' => 'serial',
+          'description' => 'Primary key.',
+        ],
+        'room_id' => [
+          'description' => 'The room ID.',
+          'type' => 'int',
+          'length' => 11,
+        ],
+        'uid' => [
+          'description' => 'The user ID',
+          'type' => 'int',
+          'length' => 11,
+        ],
+      ],
+      'primary key' => ['id'],
+    ],
+  ];
+}

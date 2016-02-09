@@ -53,6 +53,12 @@ room on IRC, Gitter or Slack. it's construct from:
   the people belong to the group will be listed.
   * Privacy - Determine if the room is between two people, Group messaging, or
   public room.
+  
+  
+* Room audience - Each private room will need to know the users of the room. 
+it's construct from:
+  * Room ID - The room ID which the audience bind the user to.
+  * User ID - the User ID.
 
 
 * Activity stream - Just like the notification center or activity stream in 

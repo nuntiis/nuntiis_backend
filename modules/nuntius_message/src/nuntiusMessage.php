@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\nunitus_message;
+namespace Drupal\nuntius_message;
 
 class nuntiusMessage {
 

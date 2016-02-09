@@ -27,6 +27,9 @@ use Drupal\restful\Plugin\resource\ResourceInterface;
  */
 class Ticker__1_0 extends ResourceEntity implements ResourceInterface {
 
+  /**
+   * {@inheritdoc}
+   */
   public function publicFields() {
     $fields = parent::publicFields();
 

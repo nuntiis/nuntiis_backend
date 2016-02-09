@@ -1,0 +1,53 @@
+<?php
+
+/**
+ * @file
+ * nuntius_room.module
+ */
+
+/**
+ * Implements hook_entity_info().
+ */
+function nuntius_room_entity_info() {
+  return [
+    'nuntius_room' => [
+      'label' => t('Nuntius room'),
+      'controller class' => 'EntityAPIController',
+      'entity class' => 'nuntiusRoomEntity',
+      'base table' => 'nuntius_room',
+      'access callback' => 'nuntius_room_access',
+      'entity keys' => [
+        'id' => 'id',
+        'label' => 'title',
+      ],
+      'bundles' => [],
+      'entity cache' => module_exists('entitycache'),
+    ],
+    'nuntius_room_audience' => [
+      'label' => t('Nuntius room'),
+      'controller class' => 'EntityAPIController',
+      'entity class' => 'nuntiusRoomAudienceEntity',
+      'base table' => 'nuntius_room_audience',
+      'access callback' => 'nuntius_room_audience_access',
+      'entity keys' => [
+        'id' => 'id',
+      ],
+      'bundles' => [],
+      'entity cache' => module_exists('entitycache'),
+    ],
+  ];
+}
+
+/**
+ * Entity access callback.
+ */
+function nuntius_room_access($op, $entity, $account) {
+  return TRUE;
+}
+
+/**
+ * Entity access callback.
+ */
+function nuntius_room_audience_access($op, $entity, $account) {
+  return TRUE;
+}

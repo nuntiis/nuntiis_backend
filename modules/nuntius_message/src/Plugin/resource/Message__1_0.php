@@ -12,8 +12,6 @@ use Drupal\restful\Plugin\resource\ResourceEntity;
 use Drupal\restful\Plugin\resource\ResourceInterface;
 
 /**
- * Class Ticker
- *
  * @Resource(
  *   name = "messages:1.0",
  *   resource = "messages",
@@ -28,6 +26,9 @@ use Drupal\restful\Plugin\resource\ResourceInterface;
  */
 class Message__1_0 extends ResourceEntity implements ResourceInterface {
 
+  /**
+   * {@inheritdoc}
+   */
   public function publicFields() {
     $fields = parent::publicFields();
 
