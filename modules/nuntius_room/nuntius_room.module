@@ -41,7 +41,7 @@ function nuntius_room_entity_info() {
 /**
  * Entity access callback.
  */
-function nuntius_room_access($op, $entity, $account) {
+function nuntius_room_access($op, nuntiusRoomEntity $entity, $account) {
   if (!$entity->privacy) {
     return TRUE;
   }
@@ -51,7 +51,7 @@ function nuntius_room_access($op, $entity, $account) {
     return TRUE;
   }
 
-  $query = new \EntityFieldQuery();
+  return (bool)$entity->isAudience($account->uid);
 }
 
 /**
