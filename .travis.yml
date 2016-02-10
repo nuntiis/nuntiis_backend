@@ -35,7 +35,6 @@ before_script:
   # reference and enable travis_ci_drupal_module_example in build site
   - ln -s $(readlink -e $(cd -)) nuntius/drupal/sites/all/modules/travis_ci_drupal_module_example
   - cd nuntius/drupal
-  - drush --yes pm-enable travis_ci_drupal_module_example
 
   # start a web server on port 8080, run in the background; wait for initialization
   - drush runserver 127.0.0.1:8080 > ~/php-server.log 2>&1 &
