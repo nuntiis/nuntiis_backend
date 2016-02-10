@@ -3,6 +3,8 @@ description = Provide rooms for adding messages.
 core = 7.x
 package = Nuntius
 
+registry_autoload[] = PSR-4
+
 dependencies[] = nuntius
 
 files[] = src/nuntiusRoomAudienceEntity.php
