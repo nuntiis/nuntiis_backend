@@ -47,6 +47,14 @@ before_script:
   - pwd
   - bin/behat --init
 
+  # Download depended modules.
+  - drush dl restful-7.x-2.5
+  - drush dl plug
+  - drush dl entity
+
+  # Enabling the modules.
+  - drush en -y nuntius nuntius_message nuntius_room nuntius_ticker
+
 script:
   - bin/behat --tags=~wip
 
