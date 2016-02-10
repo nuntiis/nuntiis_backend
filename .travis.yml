@@ -44,6 +44,5 @@ before_script:
   - git clone https://github.com/nuntius-organization/nuntius_drupal_behat.git
   - ls -al
 
-
 script:
   - echo "A"
