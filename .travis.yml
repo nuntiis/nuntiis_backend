@@ -51,4 +51,4 @@ script:
   - bin/behat --tags=~wip
 
 after_failure:
-  - ~/php-server.log
+  - cat ~/php-server.log
