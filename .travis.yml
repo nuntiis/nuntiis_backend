@@ -41,7 +41,10 @@ before_script:
 
   # Get the behat.
   - git clone https://github.com/nuntius-organization/nuntius_drupal_behat.git
-  - ls -al
+  - cd nuntius_drupal_behat.git
+  - composer install
+  - cp ../behat.local.yml behat.local.yml
+  - bin/behat --init
 
 script:
-  - echo "A"
+  - bin/behat --tags=~wip
