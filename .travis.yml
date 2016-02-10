@@ -1,0 +1,49 @@
+language: php
+sudo: false
+
+php:
+  - 5.4
+
+mysql:
+  database: nuntius
+  username: root
+  encoding: utf8
+
+addons:
+  apt:
+    packages:
+    - php5-cgi
+    - php5-mysql
+
+install:
+
+  # add composer's global bin directory to the path
+  # see: https://github.com/drush-ops/drush#install---composer
+  - export PATH="$HOME/.composer/vendor/bin:$PATH"
+
+  # install drush globally
+  - composer global require drush/drush:7.0
+
+before_script:
+  # navigate out of module directory to prevent blown stack by recursive module lookup
+  - cd ../..
+
+  # create new site, stubbing sendmail path with true to prevent delivery errors and manually resolving drush path
+  - mysql -e 'create database nuntius'
+  - php -d sendmail_path=`which true` ~/.composer/vendor/bin/drush.php --yes core-quick-drupal --profile=testing --no-server --db-url=mysql://root:@127.0.0.1/nuntius --enable=simpletest nuntius
+
+  # reference and enable travis_ci_drupal_module_example in build site
+  - ln -s $(readlink -e $(cd -)) nuntius/drupal/sites/all/modules/travis_ci_drupal_module_example
+  - cd nuntius/drupal
+  - drush --yes pm-enable travis_ci_drupal_module_example
+
+  # start a web server on port 8080, run in the background; wait for initialization
+  - drush runserver 127.0.0.1:8080 > ~/php-server.log 2>&1 &
+
+  # Get the behat.
+  - git clone https://github.com/nuntius-organization/nuntius_drupal_behat.git
+  - ls -al
+
+
+script:
+  - echo "A"

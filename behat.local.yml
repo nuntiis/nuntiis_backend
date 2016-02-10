@@ -1,0 +1,12 @@
+default:
+  extensions:
+    Behat\MinkExtension:
+      goutte: ~
+      selenium2: ~
+      base_url: http://localhost/drupal
+    Drupal\DrupalExtension:
+      drupal:
+        drupal_root: "/Applications/MAMP/htdocs/drupal"
+      api_driver: "drupal"
+      drush:
+        alias: self
