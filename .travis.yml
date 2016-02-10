@@ -49,3 +49,6 @@ before_script:
 
 script:
   - bin/behat --tags=~wip
+
+after_failure:
+  - ~/php-server.log
