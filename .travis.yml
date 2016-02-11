@@ -44,11 +44,10 @@ before_script:
   - cd nuntius_drupal_behat
   - composer install
   - cp ../sites/all/modules/nuntius/behat.local.yml behat.local.yml
-  - pwd
   - bin/behat --init
   - ls -al
   - git clone https://github.com/nuntius-organization/behat_backend.git
-  - cp -R behat_backend/bootstrap/ bootstrap/features
+  - cp -R behat_backend/bootstrap/ features/bootstrap/features
 
   # Download depended modules.
   - drush dl restful-7.x-2.5
