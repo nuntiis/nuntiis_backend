@@ -15,21 +15,11 @@ function nuntius_ticker_entity_info() {
       'controller class' => 'EntityAPIController',
       'entity class' => 'nuntiusTickerEntity',
       'base table' => 'nuntius_ticker',
-      'access callback' => 'nuntius_ticker_access',
       'entity keys' => [
         'id' => 'id',
         'label' => 'title',
       ],
-      'bundles' => [],
       'entity cache' => module_exists('entitycache'),
     ],
   ];
 }
-
-/**
- * Access callback for nuntius ticker callback.
- */
-function nuntius_ticker_access($op, $entity, $account) {
-  return TRUE;
-}
-

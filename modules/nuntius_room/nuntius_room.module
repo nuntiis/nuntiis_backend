@@ -20,7 +20,6 @@ function nuntius_room_entity_info() {
         'id' => 'id',
         'label' => 'title',
       ],
-      'bundles' => [],
       'entity cache' => module_exists('entitycache'),
     ],
     'nuntius_room_audience' => [
@@ -28,11 +27,9 @@ function nuntius_room_entity_info() {
       'controller class' => 'EntityAPIController',
       'entity class' => 'nuntiusRoomAudienceEntity',
       'base table' => 'nuntius_room_audience',
-      'access callback' => 'nuntius_room_audience_access',
       'entity keys' => [
         'id' => 'id',
       ],
-      'bundles' => [],
       'entity cache' => module_exists('entitycache'),
     ],
   ];
@@ -52,11 +49,4 @@ function nuntius_room_access($op, nuntiusRoomEntity $entity, $account) {
   }
 
   return (bool)$entity->isAudience($account->uid);
-}
-
-/**
- * Entity access callback.
- */
-function nuntius_room_audience_access($op, $entity, $account) {
-  return TRUE;
 }
