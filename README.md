@@ -1,3 +1,5 @@
+![travis-status](https://travis-ci.org/nuntius-organization/nuntius_drupal.svg)
+
 ## Nuntius
 
 What is nuntius? Nuntius is a plugable real time chat cross platforms and 
