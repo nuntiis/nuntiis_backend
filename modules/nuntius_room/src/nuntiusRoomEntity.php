@@ -1,6 +1,7 @@
 <?php
 
 use Drupal\nuntius_room\nuntiusRoomAudience;
+use \Drupal\nuntius_ticker\nuntiusTicker;
 
 class nuntiusRoomEntity extends Entity {
 
@@ -8,6 +9,22 @@ class nuntiusRoomEntity extends Entity {
   public $title;
   public $privacy;
   public $uid;
+
+  /**
+   * {@inheritdoc}
+   */
+  public function save() {
+    $parent = parent::save();
+
+    // Create a new ticker.
+    nuntiusTicker::create([
+      'lead_to' => $this->identifier(),
+      'title' => $this->title,
+      'status' => TRUE,
+    ])->save();
+
+    return $parent;
+  }
 
   /**
    * Add a user to the room.
