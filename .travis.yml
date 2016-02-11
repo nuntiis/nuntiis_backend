@@ -45,7 +45,6 @@ before_script:
   - composer install
   - cp ../sites/all/modules/nuntius/behat.local.yml behat.local.yml
   - bin/behat --init
-  - ls -al
   - git clone https://github.com/nuntius-organization/behat_backend.git
   - cp -R behat_backend/bootstrap/ features/bootstrap/features
 
