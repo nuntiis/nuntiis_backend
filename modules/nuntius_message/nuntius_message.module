@@ -15,10 +15,39 @@ function nuntius_message_entity_info() {
       'controller class' => 'EntityAPIController',
       'entity class' => 'nuntiusMessageEntity',
       'base table' => 'nuntius_message',
+      'entity access' => 'nuntius_entity_type_access_callback',
       'entity keys' => [
         'id' => 'id',
       ],
       'entity cache' => module_exists('entitycache'),
+    ],
+  ];
+}
+
+/**
+ * Implements hook_permission().
+ */
+function nuntius_message_permission() {
+  return [
+    'watch any message' => [
+      'title' => t('Watch any message'),
+      'description' => t('Grant to the user permission to watch any messages'),
+    ],
+    'edit message' => [
+      'title' => t('Edit message'),
+      'description' => t('Grant to the user permission to edit message'),
+    ],
+    'edit any message' => [
+      'title' => t('Edit any message'),
+      'description' => t('Grant to the user permission to edit any message'),
+    ],
+    'delete message' => [
+      'title' => t('Delete message'),
+      'description' => t('Grant to the user permission to delete message'),
+    ],
+    'delete any message' => [
+      'title' => t('Delete any message'),
+      'description' => t('Grant to the user permission to delete any message'),
     ],
   ];
 }

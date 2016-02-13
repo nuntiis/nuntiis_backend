@@ -15,7 +15,7 @@ function nuntius_room_entity_info() {
       'controller class' => 'EntityAPIController',
       'entity class' => 'nuntiusRoomEntity',
       'base table' => 'nuntius_room',
-      'access callback' => 'nuntius_room_access',
+      'entity access' => 'nuntius_entity_type_access_callback',
       'entity keys' => [
         'id' => 'id',
         'label' => 'title',
@@ -33,20 +33,4 @@ function nuntius_room_entity_info() {
       'entity cache' => module_exists('entitycache'),
     ],
   ];
-}
-
-/**
- * Entity access callback.
- */
-function nuntius_room_access($op, nuntiusRoomEntity $entity, $account) {
-  if (!$entity->privacy) {
-    return TRUE;
-  }
-
-  // Check if the current user is the owner of the room.
-  if ($entity->uid == $account->uid) {
-    return TRUE;
-  }
-
-  return (bool)$entity->isAudience($account->uid);
 }

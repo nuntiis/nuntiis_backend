@@ -15,6 +15,7 @@ function nuntius_ticker_entity_info() {
       'controller class' => 'EntityAPIController',
       'entity class' => 'nuntiusTickerEntity',
       'base table' => 'nuntius_ticker',
+      'entity access' => 'nuntius_entity_type_access_callback',
       'entity keys' => [
         'id' => 'id',
         'label' => 'title',

@@ -16,12 +16,25 @@ class nuntiusRoomEntity extends Entity {
   public function save() {
     $parent = parent::save();
 
-    // Create a new ticker.
-    nuntiusTicker::create([
-      'lead_to' => $this->identifier(),
-      'title' => $this->title,
-      'status' => TRUE,
-    ])->save();
+    if ($this->privacy === 0) {
+      // Create a new ticker.
+      nuntiusTicker::create([
+        'lead_to' => $this->identifier(),
+        'title' => $this->title,
+        'status' => TRUE,
+      ])->save();
+    }
+    else {
+      nuntiusTicker::create([
+        'lead_to' => $this->identifier(),
+        'title' => $this->title,
+        'status' => TRUE,
+      ])
+        ->setTriggerWebSocket(FALSE)
+        ->save();
+
+      // Send web socket in private channel of the audiences.
+    }
 
     return $parent;
   }
@@ -92,6 +105,32 @@ class nuntiusRoomEntity extends Entity {
       ->propertyCondition('room_id', $this->id)
       ->propertyCondition('uid', $uid)
       ->execute();
+  }
+
+  /**
+   * Access callback.
+   *
+   * @param $op
+   *   The operation being performed. One of 'view', 'update', 'create' or
+   *   'delete'.
+   * @param $account
+   *   The user object.
+   *
+   * @return bool
+   */
+  public function access($op, $account) {
+    if ($op == 'view') {
+      if (!$this->privacy) {
+        return TRUE;
+      }
+
+      // Check if the current user is the owner of the room.
+      if ($this->uid == $account->uid) {
+        return TRUE;
+      }
+
+      return (bool)$this->isAudience($account->uid);
+    }
   }
 
 }

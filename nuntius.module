@@ -51,6 +51,18 @@ function nuntius_menu() {
 }
 
 /**
+ * Nuntius entity access callback.
+ */
+function nuntius_entity_type_access_callback($op, $entity, $account, $entity_type) {
+
+  if (method_exists($entity_type, 'access')) {
+    return $entity->access($op, $account);
+  }
+
+  return TRUE;
+}
+
+/**
  * Implements hook_permission().
  */
 function nuntius_permission() {

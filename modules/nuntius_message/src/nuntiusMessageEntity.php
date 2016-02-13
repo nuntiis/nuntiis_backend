@@ -35,4 +35,42 @@ class nuntiusMessageEntity extends Entity {
     }
   }
 
+  /**
+   * Access callback.
+   *
+   * @param $op
+   *   The operation being performed. One of 'view', 'update', 'create' or
+   *   'delete'.
+   * @param $account
+   *   The user object.
+   *
+   * @return bool
+   */
+  public function access($op, $account) {
+    switch ($op) {
+      case 'view':
+        if ($this->uid == $account->uid) {
+          return TRUE;
+        }
+
+        if (user_access('watch any message', $account)) {
+          return TRUE;
+        }
+
+        // The uer don't have a permission to watch other messages. Check view
+        // access for the message's room.
+        return nuntiusRoom::load($this->room_id)->access('view', $account);
+
+      case 'update':
+        return TRUE;
+
+      case 'create':
+        return TRUE;
+
+      case 'delete':
+        return TRUE;
+    }
+
+  }
+
 }

@@ -6,6 +6,25 @@ use Drupal\nuntius\Nuntius;
  */
 class nuntiusTickerEntity extends Entity {
 
+  public $triggerWebSocket = FALSE;
+
+  /**
+   * Determine if a web socket need to be triggered.
+   *
+   * @param $value
+   *   The value of the object.
+   *
+   * @return $this
+   */
+  public function setTriggerWebSocket($value) {
+    $this->triggerWebSocket = $value;
+
+    return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function save() {
     $entity = parent::save();
 
@@ -14,10 +33,27 @@ class nuntiusTickerEntity extends Entity {
       return $entity;
     }
 
-    $websocket = Nuntius::initWebSocketManager();
-    $websocket->brodcast(['event' => 'new ticker', 'data' => [$resource]]);
+    if ($this->triggerWebSocket) {
+      $websocket = Nuntius::initWebSocketManager();
+      $websocket->brodcast(['event' => 'new ticker', 'data' => [$resource]]);
+    }
 
     return $entity;
+  }
+
+  /**
+   * Access callback.
+   *
+   * @param $op
+   *   The operation being performed. One of 'view', 'update', 'create' or
+   *   'delete'.
+   * @param $account
+   *   The user object.
+   *
+   * @return bool
+   */
+  public function access($op, $account) {
+
   }
 
 }
