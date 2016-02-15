@@ -47,7 +47,12 @@ class nuntiusMessageEntity extends Entity {
    * @return bool
    */
   public function access($op, $account) {
+
     switch ($op) {
+      case 'create':
+        // Check if the user have access to the room.
+        return nuntiusRoom::load($this->room_id)->access('view', $account);
+
       case 'view':
         if ($this->uid == $account->uid) {
           return TRUE;
@@ -62,14 +67,27 @@ class nuntiusMessageEntity extends Entity {
         return nuntiusRoom::load($this->room_id)->access('view', $account);
 
       case 'update':
-        return TRUE;
+        if (user_access('edit any message', $account)) {
+          return TRUE;
+        }
 
-      case 'create':
-        return TRUE;
+        if ($this->uid == $account->uid) {
+          return user_access('edit message', $account);
+        }
+      break;
 
       case 'delete':
-        return TRUE;
+        if (user_access('delete any message', $account)) {
+          return TRUE;
+        }
+
+        if ($this->uid == $account->uid) {
+          return user_access('delete message', $account);
+        }
+        break;
     }
+
+    return FALSE;
 
   }
 
